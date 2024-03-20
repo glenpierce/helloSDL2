@@ -1,6 +1,8 @@
 #include <cstdio>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
+#include <vector>
+#include "Shape.h"
 #include "Line.h"
 
 const int SCREEN_WIDTH = 640;
@@ -21,8 +23,12 @@ int main(int argv, char** args) {
             if(renderer == nullptr) {
                 printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
             } else {
+
+                std::vector<Shape*> shapes;
+
                 Line line(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, renderer);
 
+                shapes.push_back(&line);
 
                 //get window to stay up
                 SDL_Event sdlEvent;
@@ -37,12 +43,19 @@ int main(int argv, char** args) {
                         }
                     }
 
-                    line.update();
-                    line.draw();
+                    for (Shape* shape : shapes) {
+                        shape->update();
+                        shape->draw();
+                    }
 
                     SDL_RenderPresent(renderer);
 
                 }
+
+                for (Shape* shape : shapes) {
+                    delete shape;
+                }
+
             }
         }
     }

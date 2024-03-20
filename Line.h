@@ -3,8 +3,9 @@
 
 
 #include <SDL.h>
+#include "Shape.h"
 
-class Line {
+class Line : public Shape {
 public:
     Line(int x1, int y1, int x2, int y2, SDL_Renderer* renderer);
 

@@ -29,5 +29,6 @@ include_directories(${SDL2_INCLUDE_DIR})
 
 add_executable(helloSDL2 main.cpp
         Line.cpp
-        Line.h)
+        Line.h
+        Shape.h)
 target_link_libraries(helloSDL2 ${SDL2_LIBRARY})
