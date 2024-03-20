@@ -21,25 +21,21 @@ int main(int argv, char** args) {
             if(renderer == nullptr) {
                 printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
             } else {
-                SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-                SDL_RenderClear(renderer);
-
                 Line line(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, renderer);
 
 
-                SDL_RenderPresent(renderer);
                 //get window to stay up
                 SDL_Event sdlEvent;
                 bool quit = false;
                 while(!quit) {
+                    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+                    SDL_RenderClear(renderer);
+
                     while(SDL_PollEvent(&sdlEvent) ) {
                         if(sdlEvent.type == SDL_QUIT) {
                             quit = true;
                         }
                     }
-
-                    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-                    SDL_RenderClear(renderer);
 
                     line.update();
                     line.draw();
