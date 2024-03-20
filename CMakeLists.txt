@@ -27,5 +27,7 @@ include_directories(${SDL2_INCLUDE_DIR})
 #    endforeach()
 #endforeach()
 
-add_executable(helloSDL2 main.cpp)
+add_executable(helloSDL2 main.cpp
+        Line.cpp
+        Line.h)
 target_link_libraries(helloSDL2 ${SDL2_LIBRARY})

@@ -1,6 +1,7 @@
 #include <cstdio>
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
+#include "Line.h"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -23,8 +24,8 @@ int main(int argv, char** args) {
                 SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
                 SDL_RenderClear(renderer);
 
-                SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red color
-                SDL_RenderDrawLine(renderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT); // Draw a line from top-left to bottom-right
+                Line line(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, renderer);
+
 
                 SDL_RenderPresent(renderer);
                 //get window to stay up
@@ -36,6 +37,15 @@ int main(int argv, char** args) {
                             quit = true;
                         }
                     }
+
+                    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+                    SDL_RenderClear(renderer);
+
+                    line.update();
+                    line.draw();
+
+                    SDL_RenderPresent(renderer);
+
                 }
             }
         }
