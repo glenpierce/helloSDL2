@@ -9,20 +9,23 @@ set(SDL2_PATH "C:/Users/glenp/code/SDL2-2.30.1-useful")
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 
-#set(IMM32_LIBRARY "C:/Windows/System32/imm32.dll")
-#set(WINMM_LIBRARY "C:/Windows/System32/winmm.dll")
-
-#find_library(IMM32_LIBRARY NAMES imm32)
-#find_library(WINMM_LIBRARY NAMES winmm)
-
-#if(NOT IMM32_LIBRARY)
-#    message(FATAL_ERROR "IMM32 library not found")
-#endif()
+#set(SDL2_DLL_PATH "C:/Users/glenp/code/SDL2-2.30.1-useful/lib/x64/")
 #
-#if(NOT WINMM_LIBRARY)
-#    message(FATAL_ERROR "WINMM library not found")
-#endif()
+#file(GLOB SDL2_DLLS "${SDL2_DLL_PATH}/*.dll")
+#
+#foreach(SDL2_DLL IN LISTS SDL2_DLLS)
+#    file(GET_RUNTIME_DEPENDENCIES
+#            RESOLVED_DEPENDENCIES_VAR _
+#            UNRESOLVED_DEPENDENCIES_VAR _
+#            CONFLICTING_DEPENDENCIES_PREFIX _
+#            EXECUTABLES ${SDL2_DLL}
+##            DIRECTORIES "/path/to/additional/search/directories" # Add extra search directories if required
+#    )
+#
+#    foreach(file ${_})
+#        file(COPY ${file} DESTINATION "${CMAKE_BINARY_DIR}")
+#    endforeach()
+#endforeach()
 
 add_executable(helloSDL2 main.cpp)
-#target_link_libraries(helloSDL2 ${IMM32_LIBRARY} ${WINMM_LIBRARY} ${SDL2_LIBRARY})
 target_link_libraries(helloSDL2 ${SDL2_LIBRARY})
