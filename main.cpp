@@ -4,6 +4,7 @@
 #include <vector>
 #include "Shape.h"
 #include "Line.h"
+#include "Grid.h"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -26,9 +27,9 @@ int main(int argv, char** args) {
 
                 std::vector<Shape*> shapes;
 
-                Line line(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, renderer);
+                Grid grid(renderer, SCREEN_HEIGHT, SCREEN_WIDTH, 10);
 
-                shapes.push_back(&line);
+                shapes.push_back(&grid);
 
                 //get window to stay up
                 SDL_Event sdlEvent;
