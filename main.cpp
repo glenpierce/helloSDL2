@@ -5,6 +5,7 @@
 #include "Shape.h"
 #include "Line.h"
 #include "Grid.h"
+#include "Dot.h"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -28,8 +29,10 @@ int main(int argv, char** args) {
                 std::vector<Shape*> shapes;
 
                 Grid grid(renderer, SCREEN_HEIGHT, SCREEN_WIDTH, 10);
+                Dot dot(renderer, 20, 20, 1);
 
                 shapes.push_back(&grid);
+                shapes.push_back(&dot);
 
                 //get window to stay up
                 SDL_Event sdlEvent;

@@ -8,7 +8,7 @@ Grid::Grid(SDL_Renderer *renderer, int height, int width, int resolution) {
 }
 
 void Grid::draw() {
-    SDL_SetRenderDrawColor(renderer, 0xAA, 0xAA, 0xAA, 0xAA); // grey?
+    SDL_SetRenderDrawColor(renderer, 0xAA, 0xAA, 0xAA, 0xAA); // gray? gray!
     for (int i = 0; i < width; i += resolution) {
         SDL_RenderDrawLine(renderer, i, 0, i, height); // draw every vertical line
     }

@@ -32,5 +32,7 @@ add_executable(helloSDL2 main.cpp
         Line.h
         Shape.h
         Grid.cpp
-        Grid.h)
+        Grid.h
+        Dot.cpp
+        Dot.h)
 target_link_libraries(helloSDL2 ${SDL2_LIBRARY})
