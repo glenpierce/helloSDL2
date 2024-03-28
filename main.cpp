@@ -6,6 +6,7 @@
 #include "Line.h"
 #include "Grid.h"
 #include "Dot.h"
+#include "Graph.h"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -29,10 +30,25 @@ int main(int argv, char** args) {
                 std::vector<Shape*> shapes;
 
                 Grid grid(renderer, SCREEN_HEIGHT, SCREEN_WIDTH, 10);
-                Dot dot(renderer, 20, 20, 1);
+                std::vector<Node*> nodes;
+                Node* node1 = new Node(20, 20, {});
+                Node* node2 = new Node(40, 40, {node1});
+                for(int i = 0; i < 20; i++) {
+                    std::vector<Node*> connections;
+                    for(int j = 0; j < 3; j++) {
+                        if (!nodes.empty()) {
+                            connections.push_back(nodes[rand() % nodes.size()]);
+                        }
+                    }
+                    Node* node = new Node(rand() % SCREEN_WIDTH, rand() % SCREEN_HEIGHT, connections);
+                    nodes.push_back(node);
+                }
+                nodes.push_back(node1);
+                nodes.push_back(node2);
+                Graph graph(renderer, nodes);
 
                 shapes.push_back(&grid);
-                shapes.push_back(&dot);
+                shapes.push_back(&graph);
 
                 //get window to stay up
                 SDL_Event sdlEvent;

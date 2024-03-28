@@ -7,6 +7,7 @@ Graph::Graph(SDL_Renderer *renderer, std::vector<Node*> nodes) {
 }
 
 void Graph::draw() {
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red color
     for(auto& node : nodes) {
         auto connections = node->getConnections();
         for(auto& connection : connections) {
