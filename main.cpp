@@ -47,6 +47,9 @@ int main(int argv, char** args) {
                 nodes.push_back(node2);
                 Graph graph(renderer, nodes);
 
+                Dot dot(renderer, 100, 100, 100);
+                shapes.push_back(&dot);
+
                 shapes.push_back(&grid);
                 shapes.push_back(&graph);
 

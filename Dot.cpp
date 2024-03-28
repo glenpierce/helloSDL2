@@ -9,7 +9,30 @@ Dot::Dot(SDL_Renderer* renderer, int x, int y, int radius) {
 
 void Dot::draw() {
     SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF); // Red
-    SDL_RenderDrawPoint(renderer, x, y);
+    int d = 3 - 2 * radius;
+    int currentX = radius;
+    int currentY = 0;
+
+    while (currentY <= currentX) {
+        SDL_RenderDrawPoint(renderer,x + currentX, y + currentY);
+        SDL_RenderDrawPoint(renderer,x - currentX, y + currentY);
+        SDL_RenderDrawPoint(renderer,x + currentX, y - currentY);
+        SDL_RenderDrawPoint(renderer,x - currentX, y - currentY);
+        SDL_RenderDrawPoint(renderer,x + currentY, y + currentX);
+        SDL_RenderDrawPoint(renderer,x - currentY, y + currentX);
+        SDL_RenderDrawPoint(renderer,x + currentY, y - currentX);
+        SDL_RenderDrawPoint(renderer,x - currentY, y - currentX);
+
+        currentY++;
+
+        // Update d based on the decision criterion
+        if (d > 0) {
+            currentX--;
+            d = d + 4 * (currentY - currentX) + 10;
+        } else {
+            d = d + 4 * currentY + 6;
+        }
+    }
 }
 
 void Dot::update() {
